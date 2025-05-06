@@ -14,11 +14,13 @@ public class MessageHandler extends SimpleChannelInboundHandler<Message> {
         System.out.println("[服务端] 收到消息: " + msg);
         switch (msg.getType()) {
             case MESSAGE:
-                System.out.println("[路由] 将消息路由到房间: " + msg.getRoomId());
+
                 chatRoomService.broadcastMessage(msg);
+                System.out.println("[路由] 将消息路由到房间: " + msg.getRoomId());
                 break;
             case JOIN_ROOM:
                 chatRoomService.joinRoom(msg.getSender(), msg.getRoomId());
+                System.out.println("[服务端] 用户 " + msg.getSender() + " 请求加入房间 " + msg.getRoomId());
                 break;
             case LEAVE_ROOM:
                 chatRoomService.leaveRoom(msg.getSender(), msg.getRoomId());

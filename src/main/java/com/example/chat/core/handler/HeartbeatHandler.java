@@ -14,3 +14,4 @@ public class HeartbeatHandler extends ChannelInboundHandlerAdapter {
         }
     }
 }
+//自动关闭长时间无反应的客户端连接
