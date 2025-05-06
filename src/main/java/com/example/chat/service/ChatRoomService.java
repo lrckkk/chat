@@ -29,9 +29,11 @@ public class ChatRoomService {
         }
 
         for (String userId : rooms.get(roomId)) {
+            System.out.println("[<UNK>] <UNK>ID: " + rooms + "<UNK>: ");
             System.out.println("尝试向用户 " + userId + " 发送消息");
 
             Channel channel = UserService.getOnlineUsers().get(userId);
+
             if (channel == null) {
                 System.out.println("用户 " + userId + " 没有找到 Channel（可能不在线）");
             } else if (!channel.isActive()) {
