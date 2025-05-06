@@ -18,7 +18,9 @@ public class AuthHandler extends SimpleChannelInboundHandler<Message> {
             return;
         }
         System.out.println("[认证] 收到登录请求: " + msg.getSender());
+        //这里实际上sender是username，content是密码
         User user = userService.authenticate(msg.getSender(), msg.getContent());
+        System.out.println(user);
 
         if (user != null) {
             Message response = new Message();

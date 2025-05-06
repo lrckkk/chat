@@ -15,7 +15,7 @@ public class UserService {
 
     public User authenticate(String username, String password) {
         // 模拟数据库验证
-        if ("admin".equals(username) && "admin123".equals(password)) {
+        if ("1".equals(username) && "admin123".equals(password)) {
             User user = new User();
             user.setUserId("1"); // 实际应用中应该用唯一 ID，如 UUID
             user.setUsername(username);
