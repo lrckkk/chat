@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 public class ChatRoomService {
-    private final Map<String, CopyOnWriteArraySet<String>> rooms = new ConcurrentHashMap<>();
+    private final Map<String, CopyOnWriteArraySet<String>> rooms = new ConcurrentHashMap<>();//rooms是一个线程安全的map,用来维护聊天室数据
 
     public void joinRoom(String userId, String roomId) {
         rooms.computeIfAbsent(roomId, k -> new CopyOnWriteArraySet<>()).add(userId);
