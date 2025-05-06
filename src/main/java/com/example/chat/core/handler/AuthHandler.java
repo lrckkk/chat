@@ -12,7 +12,7 @@ public class AuthHandler extends SimpleChannelInboundHandler<Message> {
     private final UserService userService = new UserService();
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, Message msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, Message msg) {
         if (msg.getType() != MessageType.LOGIN_REQUEST) {
             ctx.fireChannelRead(msg);
             return;
