@@ -26,6 +26,7 @@ public class UserService {
 
     public void addOnlineUser(User user, Channel channel) {
         onlineUsers.put(user.getUserId(), channel);
+        System.out.println("<UNK>" + onlineUsers + "<UNK>");
     }
 
     public void removeOnlineUser(String userId) {

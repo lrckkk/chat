@@ -37,14 +37,22 @@ public class TestClient {
             // 发送登录请求
             Message loginMsg = new Message();
             loginMsg.setType(MessageType.LOGIN_REQUEST);
-            loginMsg.setSender("admin");
+            loginMsg.setSender("1");
             loginMsg.setContent("admin123");
             channel.writeAndFlush(loginMsg);
+
+            // 加入房间
+            Message joinMsg = new Message();
+            joinMsg.setType(MessageType.JOIN_ROOM);
+            joinMsg.setSender("1");
+            joinMsg.setRoomId("room1");
+            channel.writeAndFlush(joinMsg);
+            System.out.println("用户"+joinMsg.getSender()+"尝试加入房间"+joinMsg.getRoomId());
 
             // 发送测试消息
             Message chatMsg = new Message();
             chatMsg.setType(MessageType.MESSAGE);
-            chatMsg.setSender("admin");
+            chatMsg.setSender("1");
             chatMsg.setRoomId("room1");
             chatMsg.setContent("Hello World");
             channel.writeAndFlush(chatMsg);
