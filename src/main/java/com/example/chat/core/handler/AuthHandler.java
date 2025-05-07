@@ -8,11 +8,13 @@ import com.example.chat.service.UserService;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
+import java.sql.SQLException;
+
 public class AuthHandler extends SimpleChannelInboundHandler<Message> {
     private final UserService userService = new UserService();
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, Message msg) {
+    protected void channelRead0(ChannelHandlerContext ctx, Message msg) throws SQLException {
         if (msg.getType() != MessageType.LOGIN_REQUEST) {
             ctx.fireChannelRead(msg);
             return;
@@ -30,9 +32,9 @@ public class AuthHandler extends SimpleChannelInboundHandler<Message> {
             response.setSender("system");
             ctx.writeAndFlush(response);
             ctx.channel().attr(UserService.USER_KEY).set(user);
-            System.out.println("[认证] 用户 " + user.getUserId() + " 登录成功");
+            System.out.println("[认证] 用户 " + user.getUsername() + " 登录成功");
             userService.addOnlineUser(user, ctx.channel());
-            System.out.println("[用户上线] " + user.getUserId() + " -> " );
+            System.out.println("[用户上线] " + user.getUsername() + " -> " );
         } else {
             Message response = new Message();
             response.setType(MessageType.LOGIN_RESPONSE);
