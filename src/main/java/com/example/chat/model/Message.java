@@ -13,6 +13,7 @@ public class Message {
     private String sender;
     private String roomId;
     private String content;
+    private String receiver;
     private long timestamp;
     private List<String>users;
     public Message() {
