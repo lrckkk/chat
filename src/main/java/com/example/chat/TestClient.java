@@ -45,18 +45,24 @@ public class TestClient {
             Message joinMsg = new Message();
             joinMsg.setType(MessageType.JOIN_ROOM);
             joinMsg.setSender("1");
-            joinMsg.setRoomId("r1111");
+            joinMsg.setRoomId("r11115");
             channel.writeAndFlush(joinMsg);
             System.out.println("用户"+joinMsg.getSender()+"尝试加入房间"+joinMsg.getRoomId());
 
-            // 发送测试消息
-            Message chatMsg = new Message();
-            chatMsg.setType(MessageType.MESSAGE);
-            chatMsg.setSender("1");
-            chatMsg.setRoomId("r1111");
-            chatMsg.setContent("Hello World");
-            channel.writeAndFlush(chatMsg);
-
+//            // 发送测试消息
+//            Message chatMsg = new Message();
+//            chatMsg.setType(MessageType.MESSAGE);
+//            chatMsg.setSender("1");
+//            chatMsg.setRoomId("r11114");
+//            chatMsg.setContent("Hello World");
+//            channel.writeAndFlush(chatMsg);
+            //退出房间
+            Message exitMsg = new Message();
+            exitMsg.setType(MessageType.LEAVE_ROOM);
+            exitMsg.setSender("1");
+            exitMsg.setRoomId("r11114");
+            channel.writeAndFlush(exitMsg);
+            System.out.println("用户"+exitMsg.getSender()+"退出房间"+exitMsg.getRoomId());
             channel.closeFuture().await();
         } finally {
             group.shutdownGracefully();
