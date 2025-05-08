@@ -7,6 +7,7 @@ public enum MessageType {
     JOIN_ROOM,       // 加入聊天室
     LEAVE_ROOM,      // 离开聊天室
     HEARTBEAT,       // 心跳检测
-    NOTIFICATION    // 系统通知
+    NOTIFICATION,    // 系统通知
+//    SYSTEM_NOTIFICATION
 
 }
