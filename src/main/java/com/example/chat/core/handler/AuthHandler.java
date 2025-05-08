@@ -20,7 +20,9 @@ public class AuthHandler extends SimpleChannelInboundHandler<Message> {
             return;
         }
         System.out.println("[认证] 收到登录请求: " + msg.getSender());
+        //这里实际上sender是username，content是密码
         User user = userService.authenticate(msg.getSender(), msg.getContent());
+        System.out.println(user);
 
         if (user != null) {
             Message response = new Message();
@@ -30,9 +32,9 @@ public class AuthHandler extends SimpleChannelInboundHandler<Message> {
             response.setSender("system");
             ctx.writeAndFlush(response);
             ctx.channel().attr(UserService.USER_KEY).set(user);
-            System.out.println("[认证] 用户 " + user.getUserId() + " 登录成功");
+            System.out.println("[认证] 用户 " + user.getUsername() + " 登录成功");
             userService.addOnlineUser(user, ctx.channel());
-            System.out.println("[用户上线] " + user.getUserId() + " -> " );
+            System.out.println("[用户上线] " + user.getUsername() + " -> " );
         } else {
             Message response = new Message();
             response.setType(MessageType.LOGIN_RESPONSE);

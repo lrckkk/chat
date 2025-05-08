@@ -3,6 +3,7 @@ package com.example.chat.service;
 import com.example.chat.model.User;
 import io.netty.channel.Channel;
 import io.netty.util.AttributeKey;
+import lombok.Value;
 
 import java.sql.*;
 import java.util.Map;
@@ -46,11 +47,10 @@ public class UserService {
         }
 
         return null;
-
     }
 
     public void addOnlineUser(User user, Channel channel) {
-        onlineUsers.put(user.getUserId(), channel);
+        onlineUsers.put(user.getUsername(), channel);
         System.out.println("<UNK>" + onlineUsers + "<UNK>");
     }
 

@@ -2,15 +2,35 @@ package com.example.chat.service;
 
 import com.example.chat.model.Message;
 import io.netty.channel.Channel; // 添加这个导入
+import com.example.chat.protocol.MessageType;
+import com.example.chat.protocol.StatusCode;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
+import com.example.chat.service.sql;
 
 public class ChatRoomService {
-    private final Map<String, CopyOnWriteArraySet<String>> rooms = new ConcurrentHashMap<>();//rooms是一个线程安全的map,用来维护聊天室数据
+    private final static Map<String, CopyOnWriteArraySet<String>> rooms = new ConcurrentHashMap<>();//rooms是一个线程安全的map,用来维护聊天室数据
 
-    public void joinRoom(String userId, String roomId) {
+    public void joinRoom(String userId, String roomId) throws SQLException {
         rooms.computeIfAbsent(roomId, k -> new CopyOnWriteArraySet<>()).add(userId);
+        sql sql = new sql();
+        sql.updateUserRoomAndActivate(userId, roomId);
+        CopyOnWriteArraySet<String> userlist = rooms.get(roomId);
+        System.out.println("用户列表:"+userlist);
+        Message userMessage = new Message();
+        userMessage.setSender("System");
+        userMessage.setType(MessageType.INFORMATION);
+        userMessage.setRoomId(roomId);
+        List<String> userIdList = new ArrayList<>(userlist);
+        userMessage.setUsers(userIdList);
+        Channel channel = UserService.getOnlineUsers().get(userId);
+        channel.writeAndFlush(userMessage);
+
+
     }
 
     public void leaveRoom(String userId, String roomId) {

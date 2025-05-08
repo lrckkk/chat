@@ -45,7 +45,7 @@ public class TestClient {
             Message joinMsg = new Message();
             joinMsg.setType(MessageType.JOIN_ROOM);
             joinMsg.setSender("1");
-            joinMsg.setRoomId("room1");
+            joinMsg.setRoomId("r1111");
             channel.writeAndFlush(joinMsg);
             System.out.println("用户"+joinMsg.getSender()+"尝试加入房间"+joinMsg.getRoomId());
 
@@ -53,8 +53,8 @@ public class TestClient {
             Message chatMsg = new Message();
             chatMsg.setType(MessageType.MESSAGE);
             chatMsg.setSender("1");
-            chatMsg.setRoomId("room1");
-            chatMsg.setContent("Hello World");
+            chatMsg.setRoomId("r1111");
+            chatMsg.setContent("yidali");
             channel.writeAndFlush(chatMsg);
 
             channel.closeFuture().await();
