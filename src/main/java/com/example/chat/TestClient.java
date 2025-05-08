@@ -49,6 +49,7 @@ public class TestClient {
             channel.writeAndFlush(joinMsg);
             System.out.println("用户"+joinMsg.getSender()+"尝试加入房间"+joinMsg.getRoomId());
 
+
 //            // 发送测试消息
 //            Message chatMsg = new Message();
 //            chatMsg.setType(MessageType.MESSAGE);

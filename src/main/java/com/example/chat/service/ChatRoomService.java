@@ -122,6 +122,7 @@ public class ChatRoomService {
 //            }
 //        }
 //    }
+
     public void broadcastMessage(Message message) {
         String roomId = message.getRoomId();
         System.out.println("[广播消息] 房间ID: " + roomId + "，消息内容: " + message.getContent());
