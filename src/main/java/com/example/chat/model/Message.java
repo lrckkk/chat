@@ -11,6 +11,7 @@ public class Message {
     private String sender;
     private String roomId;
     private String content;
+    private String receiver;
     private long timestamp;
     public Message() {
         this.timestamp = System.currentTimeMillis(); // 自动设置时间戳

@@ -31,7 +31,7 @@ public class ChatRoomService {
         for (String userId : rooms.get(roomId)) {
             System.out.println("[<UNK>] <UNK>ID: " + rooms + "<UNK>: ");
             System.out.println("尝试向用户 " + userId + " 发送消息");
-
+            message.setReceiver(userId);//为web渲染设置接收者
             Channel channel = UserService.getOnlineUsers().get(userId);
 
             if (channel == null) {

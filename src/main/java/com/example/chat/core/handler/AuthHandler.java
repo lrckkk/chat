@@ -8,11 +8,13 @@ import com.example.chat.service.UserService;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
+import java.sql.SQLException;
+
 public class AuthHandler extends SimpleChannelInboundHandler<Message> {
     private final UserService userService = new UserService();
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, Message msg) {
+    protected void channelRead0(ChannelHandlerContext ctx, Message msg) throws SQLException {
         if (msg.getType() != MessageType.LOGIN_REQUEST) {
             ctx.fireChannelRead(msg);
             return;
