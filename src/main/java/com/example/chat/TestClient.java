@@ -54,7 +54,7 @@ public class TestClient {
             chatMsg.setType(MessageType.MESSAGE);
             chatMsg.setSender("1");
             chatMsg.setRoomId("r1111");
-            chatMsg.setContent("Hello World");
+            chatMsg.setContent("yidali");
             channel.writeAndFlush(chatMsg);
 
             channel.closeFuture().await();

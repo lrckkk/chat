@@ -2,8 +2,11 @@ package com.example.chat.service;
 
 import com.example.chat.model.Message;
 import io.netty.channel.Channel; // 添加这个导入
-
+import com.example.chat.protocol.MessageType;
+import com.example.chat.protocol.StatusCode;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
@@ -18,7 +21,14 @@ public class ChatRoomService {
         sql.updateUserRoomAndActivate(userId, roomId);
         CopyOnWriteArraySet<String> userlist = rooms.get(roomId);
         System.out.println("用户列表:"+userlist);
-
+        Message userMessage = new Message();
+        userMessage.setSender("System");
+        userMessage.setType(MessageType.INFORMATION);
+        userMessage.setRoomId(roomId);
+        List<String> userIdList = new ArrayList<>(userlist);
+        userMessage.setUsers(userIdList);
+        Channel channel = UserService.getOnlineUsers().get(userId);
+        channel.writeAndFlush(userMessage);
 
 
     }
