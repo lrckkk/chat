@@ -45,7 +45,6 @@ public class UserService {
                     User user = new User();
                     user.setUserId("1");
                     user.setUsername(rs.getString("username"));
-                    System.out.println("xxxxxxxx" + user.getUsername());
                     return user;
                 }
             }
