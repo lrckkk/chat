@@ -63,6 +63,7 @@ public class ChatRoomService {
 //        }
 //    }
 
+
     public void leaveRoom(String userId, String roomId) {
         sql sql = new sql();
         sql.updateUserRoomAndActivate(userId, null);  // 清空用户房间信息

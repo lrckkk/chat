@@ -50,6 +50,7 @@ public class sql {
 //        }
 //    }
 
+
     // 新增消息存储方法
     public void insertMessage(String content, String username, String roomId) {
         String sql = "INSERT INTO message (content, username, room_at) VALUES (?, ?, ?)";
