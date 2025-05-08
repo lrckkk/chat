@@ -58,6 +58,7 @@ public class TestClient {
 //            chatMsg.setRoomId("r11114");
 //            chatMsg.setContent("Hello World");
 //            channel.writeAndFlush(chatMsg);
+
             //退出房间
             Message exitMsg = new Message();
             exitMsg.setType(MessageType.LEAVE_ROOM);

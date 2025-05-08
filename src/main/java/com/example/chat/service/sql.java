@@ -65,7 +65,6 @@ public class sql {
         }
     }
 //
-
     // 重构房间更新方法（使用事务+ON DUPLICATE KEY）
     public void updateUserRoomAndActivate(String userId, String roomId) {
         String updateSql = "UPDATE user SET room_at = ? WHERE username = ?";

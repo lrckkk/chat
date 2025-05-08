@@ -80,7 +80,6 @@ public class ChatRoomService {
             }
         });
     }
-
     private void checkAndDeactivateRoom(String roomId) throws SQLException {
         String sql = "SELECT COUNT(*) FROM user WHERE room_at = ?";
         try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
