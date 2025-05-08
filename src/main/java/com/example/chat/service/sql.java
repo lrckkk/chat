@@ -90,7 +90,6 @@ public class sql {
             }
 
 
-
             conn.commit();  // 提交事务
         } catch (SQLException e) {
             throw new RuntimeException("Transaction failed", e);
