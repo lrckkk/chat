@@ -63,7 +63,7 @@ public class sql {
             throw new RuntimeException("Failed to save message", e);
         }
     }
-
+//
 
     // 重构房间更新方法（使用事务+ON DUPLICATE KEY）
     public void updateUserRoomAndActivate(String userId, String roomId) {

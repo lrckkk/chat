@@ -31,7 +31,7 @@ public class TestClient {
                                     });
                         }
                     });
-
+//
             Channel channel = bootstrap.connect("localhost", 8080).sync().channel();
 
             // 发送登录请求
