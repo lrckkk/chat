@@ -30,6 +30,7 @@ public class AuthHandler extends SimpleChannelInboundHandler<Message> {
             response.setStatus(StatusCode.SUCCESS);
             response.setContent("Login successful");
             response.setSender("system");
+            response.setReceiver(user.getUsername());
             ctx.writeAndFlush(response);
             ctx.channel().attr(UserService.USER_KEY).set(user);
             System.out.println("[认证] 用户 " + user.getUsername() + " 登录成功");

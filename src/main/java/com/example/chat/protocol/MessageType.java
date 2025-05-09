@@ -8,6 +8,7 @@ public enum MessageType {
     LEAVE_ROOM,      // 离开聊天室
     HEARTBEAT,       // 心跳检测
     NOTIFICATION,    // 系统通知
+    INFORMATION
 //    SYSTEM_NOTIFICATION
 
 }

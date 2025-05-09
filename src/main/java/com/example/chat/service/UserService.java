@@ -16,7 +16,7 @@ public class UserService {
     private static final Map<String, Channel> onlineUsers = new ConcurrentHashMap<>();
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/chat?useUnicode=true&characterEncoding=utf-8";
     private static final String JDBC_USER = "root";
-    private static final String JDBC_PASSWORD = "xy20041004";
+    private static final String JDBC_PASSWORD = "liu123";
 
     public User authenticate(String username, String password) throws SQLException {
 

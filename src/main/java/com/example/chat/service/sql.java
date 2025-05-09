@@ -5,7 +5,7 @@ import java.sql.*;
 public class sql {
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/chat";
     private static final String JDBC_USER = "root";
-    private static final String JDBC_PASSWORD = "123456";
+    private static final String JDBC_PASSWORD = "liu123";
 //    public void updateUserRoomAndActivate(String userId, String roomId) throws SQLException {
 //        // 1. 更新用户的 room_at 字段
 //        String updateUserSql = "UPDATE user SET room_at = ? WHERE username = ?";
