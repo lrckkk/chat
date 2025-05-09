@@ -65,7 +65,6 @@ public class sql {
         }
     }
 //
-
     // 重构房间更新方法（使用事务+ON DUPLICATE KEY）
     public void updateUserRoomAndActivate(String userId, String roomId) {
         String updateSql = "UPDATE user SET room_at = ? WHERE username = ?";
@@ -107,6 +106,19 @@ public class sql {
             pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Failed to update room status", e);
+        }
+    }
+//注册账号
+    public void Register(String username, String password) {
+        String sql = "INSERT INTO user (username, password, room_at) VALUES (?, ?, null)";
+        try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+//            pstmt.setString(3, null);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to save message", e);
         }
     }
 
